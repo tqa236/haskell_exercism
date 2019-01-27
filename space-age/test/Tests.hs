@@ -1,12 +1,12 @@
 {-# OPTIONS_GHC -fno-warn-type-defaults #-}
 {-# LANGUAGE RecordWildCards #-}
 
-import Data.Foldable     (for_)
-import Data.Function     (on)
-import Test.Hspec        (Spec, describe, it, shouldBe)
-import Test.Hspec.Runner (configFastFail, defaultConfig, hspecWith)
+import           Data.Foldable     (for_)
+import           Data.Function     (on)
+import           Test.Hspec        (Spec, describe, it, shouldBe)
+import           Test.Hspec.Runner (configFastFail, defaultConfig, hspecWith)
 
-import SpaceAge (Planet(..), ageOn)
+import           SpaceAge          (Planet (..), ageOn)
 
 main :: IO ()
 main = hspecWith defaultConfig {configFastFail = True} specs
