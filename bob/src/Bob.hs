@@ -6,12 +6,9 @@ import           Data.Char
 responseFor :: String -> String
 responseFor xs = case (no_lower, question, no_upper, empty) of
     (_, _, _, True)     -> "Fine. Be that way!"
-    (True, True, _, _)  ->"Calm down, I know what I'm doing!"
-    (_, True, True, _)  -> "Sure."
-    (False, True, _, _) -> "Sure."
     (_, False, True, _) -> "Whatever."
-
-    -- (False, True, _, _) -> "Sure."
+    (_, _, True, _)     -> "Sure."
+    (False, True, _, _) -> "Sure."
     (_, True, _, _)     -> "Calm down, I know what I'm doing!"
     (True, _, _, _)     -> "Whoa, chill out!"
     _                   ->  "Whatever."
