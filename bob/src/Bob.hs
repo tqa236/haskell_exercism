@@ -4,16 +4,18 @@ import           Data.Char
 
 
 responseFor :: String -> String
-responseFor xs = case (yell, question, no_alpha, empty) of
-    (_, _, _,  True)    -> "Fine. Be that way!"
+responseFor xs = case (no_lower, question, no_upper, empty) of
+    (_, _, _, True)     -> "Fine. Be that way!"
+    (True, True, _, _)  ->"Calm down, I know what I'm doing!"
+    (_, True, True, _)  -> "Sure."
+    (False, True, _, _) -> "Sure."
     (_, False, True, _) -> "Whatever."
 
-    (False, True, _, _) -> "Sure."
-    (_, True, True,  _) -> "Sure."
-    (True, True, _, _)  -> "Calm down, I know what I'm doing!"
-    (True, False, _, _) -> "Whoa, chill out!"
+    -- (False, True, _, _) -> "Sure."
+    (_, True, _, _)     -> "Calm down, I know what I'm doing!"
+    (True, _, _, _)     -> "Whoa, chill out!"
     _                   ->  "Whatever."
-    where yell = filter (isAlpha) xs == filter (isAlpha) (map Data.Char.toUpper xs)
+    where no_lower = filter (isLower) xs == []
           question = last ( filter (/= ' ') xs)  == '?'
-          no_alpha = xs == filter (not . isAlpha) xs
+          no_upper = filter (isUpper) xs == []
           empty = filter (not . isSpace) xs == []
