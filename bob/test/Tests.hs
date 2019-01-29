@@ -1,12 +1,12 @@
-{-# LANGUAGE RecordWildCards #-}
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards   #-}
 
-import Data.Foldable     (for_)
-import Test.Hspec        (Spec, describe, it, shouldBe)
-import Test.Hspec.Runner (configFastFail, defaultConfig, hspecWith)
-import Data.String       (fromString)
+import           Data.Foldable     (for_)
+import           Data.String       (fromString)
+import           Test.Hspec        (Spec, describe, it, shouldBe)
+import           Test.Hspec.Runner (configFastFail, defaultConfig, hspecWith)
 
-import Bob (responseFor)
+import           Bob               (responseFor)
 
 main :: IO ()
 main = hspecWith defaultConfig {configFastFail = True} specs
