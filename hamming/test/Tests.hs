@@ -1,11 +1,11 @@
 {-# OPTIONS_GHC -fno-warn-type-defaults #-}
 {-# LANGUAGE RecordWildCards #-}
 
-import Data.Foldable     (for_)
-import Test.Hspec        (Spec, describe, it, shouldBe)
-import Test.Hspec.Runner (configFastFail, defaultConfig, hspecWith)
+import           Data.Foldable     (for_)
+import           Test.Hspec        (Spec, describe, it, shouldBe)
+import           Test.Hspec.Runner (configFastFail, defaultConfig, hspecWith)
 
-import Hamming (distance)
+import           Hamming           (distance)
 
 main :: IO ()
 main = hspecWith defaultConfig {configFastFail = True} specs
@@ -101,4 +101,9 @@ cases = [ Case { description = "empty strands"
                , strand2     = "AGTG"
                , expected    = Nothing
                }
+       , Case { description = "disallow only one empty strand"
+              , strand1     = ""
+              , strand2     = "G"
+              , expected    = Nothing
+              }
         ]
