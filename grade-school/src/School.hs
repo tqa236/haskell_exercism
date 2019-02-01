@@ -3,7 +3,7 @@ module School (School, add, empty, grade, sorted) where
 data School = Dummy
 
 add :: Int -> String -> School -> School
-add gradeNum student school = error "You need to implement this function."
+add gradeNum student school = [(gradeNum, [student])]
 
 empty :: School
 empty = error "You need to implement this function."
