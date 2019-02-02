@@ -1,8 +1,8 @@
 module Isogram (isIsogram) where
 
 import           Data.Char
--- import           Data.Set
+import qualified Data.Set  as Set
 
 isIsogram :: String -> Bool
-isIsogram phrase = length (alpha) == length (unique alpha)
-    where alpha = filter (isAlpha) phrase
+isIsogram phrase = length (lowerString) == Set.size (Set.fromList lowerString)
+    where lowerString = map toLower (filter (isAlpha) phrase)

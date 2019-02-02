@@ -6,7 +6,7 @@ add :: Int -> String -> School -> School
 add gradeNum student school = [(gradeNum, [student])]
 
 empty :: School
-empty = error "You need to implement this function."
+empty = []
 
 grade :: Int -> School -> [String]
 grade gradeNum school = error "You need to implement this function."

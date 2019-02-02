@@ -1,4 +1,5 @@
 module Diamond (diamond) where
 
 diamond :: Char -> Maybe [String]
-diamond = error "You need to implement this function"
+diamond 'A' = Just ["A"]
+diamond 'B' = [" " ++ diamond 'A' ++ " ", "B B"," " ++ diamond 'A' ++ " "]

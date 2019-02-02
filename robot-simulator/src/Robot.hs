@@ -15,10 +15,10 @@ data Bearing = North
 data Robot = Dummy
 
 bearing :: Robot -> Bearing
-bearing robot = error "You need to implement this function."
+bearing robot = North
 
 coordinates :: Robot -> (Integer, Integer)
-coordinates robot = error "You need to implement this function."
+coordinates robot = (0, 0)
 
 mkRobot :: Bearing -> (Integer, Integer) -> Robot
 mkRobot direction coordinates = error "You need to implement this function."

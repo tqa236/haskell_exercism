@@ -4,11 +4,13 @@ version: 1.7.0.7
 dependencies:
   - base
 
+
 library:
   exposed-modules: Isogram
   source-dirs: src
   ghc-options: -Wall
-  # dependencies:
+  dependencies:
+  - containers
   # - foo       # List here the packages you
   # - bar       # want to use in your solution.
 
