@@ -10,7 +10,7 @@ responseFor xs
     | noLowercaseLetter = "Whoa, chill out!"
     | otherwise = "Whatever."
     where iSEmpty = null (filter (not . isSpace) xs)
-          noLowercaseLetter = null (filter (isLower) xs)
+          noLowercaseLetter = null (filter (isLower) xs) && not null (filter (isUpper) xs)
           isQuestion = last ( filter (/= ' ') xs)  == '?'
           noLetter = null (filter (isAlpha) xs)
           checkLetter
