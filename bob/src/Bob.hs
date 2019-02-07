@@ -2,17 +2,18 @@ module Bob (responseFor) where
 
 import           Data.Char
 
-
 responseFor :: String -> String
-responseFor xs = case (no_lower, question, no_upper, empty) of
-    (_, _, _, True)     -> "Fine. Be that way!"
-    (_, False, True, _) -> "Whatever."
-    (_, _, True, _)     -> "Sure."
-    (False, True, _, _) -> "Sure."
-    (_, True, _, _)     -> "Calm down, I know what I'm doing!"
-    (True, _, _, _)     -> "Whoa, chill out!"
-    _                   ->  "Whatever."
-    where no_lower = filter (isLower) xs == []
-          question = last ( filter (/= ' ') xs)  == '?'
-          no_upper = filter (isUpper) xs == []
-          empty = filter (not . isSpace) xs == []
+responseFor xs
+    | iSEmpty = "Fine. Be that way!"
+    | isQuestion = checkLetter
+    | noLetter = "Whatever."
+    | noLowercaseLetter = "Whoa, chill out!"
+    | otherwise = "Whatever."
+    where iSEmpty = null (filter (not . isSpace) xs)
+          noLowercaseLetter = null (filter (isLower) xs)
+          isQuestion = last ( filter (/= ' ') xs)  == '?'
+          noLetter = null (filter (isAlpha) xs)
+          checkLetter
+            | noLetter = "Sure."
+            | noLowercaseLetter = "Calm down, I know what I'm doing!"
+            | otherwise = "Sure."
