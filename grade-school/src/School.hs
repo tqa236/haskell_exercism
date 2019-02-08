@@ -1,12 +1,15 @@
 module School (School, add, empty, grade, sorted) where
 
-data School = Dummy
+import           Data.Map (Map)
+import qualified Data.Map as Map
+
+type School = [(String, Int)]
 
 add :: Int -> String -> School -> School
-add gradeNum student school = [(gradeNum, [student])]
+add gradeNum student school = Map.insert gradeNum [student] school
 
 empty :: School
-empty = []
+empty = empty
 
 grade :: Int -> School -> [String]
 grade gradeNum school = error "You need to implement this function."
