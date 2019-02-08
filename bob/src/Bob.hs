@@ -8,9 +8,9 @@ responseFor xs
     | isQuestion = checkYelling
     | isYelling = "Whoa, chill out!"
     | otherwise = "Whatever."
-    where iSEmpty = null (filter (not . isSpace) xs)
-          isYelling = null (filter (isLower) xs) && not (null (filter (isUpper) xs))
-          isQuestion = last ( filter (/= ' ') xs)  == '?'
+    where iSEmpty = all isSpace xs
+          isYelling = all (not .isLower) xs && any isUpper xs
+          isQuestion = last ( filter (not . isSpace) xs)  == '?'
           checkYelling
             | isYelling = "Calm down, I know what I'm doing!"
             | otherwise = "Sure."
