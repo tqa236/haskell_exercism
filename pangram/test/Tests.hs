@@ -1,12 +1,12 @@
-{-# LANGUAGE RecordWildCards #-}
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards   #-}
 
-import Data.Foldable     (for_)
-import Data.String       (fromString)
-import Test.Hspec        (Spec, describe, it, shouldBe)
-import Test.Hspec.Runner (configFastFail, defaultConfig, hspecWith)
+import           Data.Foldable     (for_)
+import           Data.String       (fromString)
+import           Test.Hspec        (Spec, describe, it, shouldBe)
+import           Test.Hspec.Runner (configFastFail, defaultConfig, hspecWith)
 
-import Pangram (isPangram)
+import           Pangram           (isPangram)
 
 main :: IO ()
 main = hspecWith defaultConfig {configFastFail = True} specs
@@ -62,11 +62,9 @@ cases = [ Case { description = "sentence empty"
                , input       = "the quick brown fox jumps over with lazy FX"
                , expected    = False
                }
-        {-
         -- The following test can be enabled for String-based solutions:
         , Case { description = "determine pangram by terminating as soon as all letters have occurred"
-               , input       = "abcdefghijklmnopqrstuvwxyz" ++ [undefined]
+               , input       = "abcdefghijklmnopqrstuvwxyz" ++ repeat 'x'
                , expected    = True
                }
-        -- -}
         ]
