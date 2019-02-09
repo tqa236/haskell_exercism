@@ -9,7 +9,8 @@ library:
   exposed-modules: DND
   source-dirs: src
   ghc-options: -Wall
-  # dependencies:
+  dependencies:
+  - random
   # - foo       # List here the packages you
   # - bar       # want to use in your solution.
 

@@ -4,7 +4,8 @@ module DND ( Character(..)
            , character
            ) where
 
-import Test.QuickCheck (Gen)
+import           System.Random   (randomRIO)
+import           Test.QuickCheck (Gen)
 
 data Character = Character
   { name         :: String
@@ -18,13 +19,15 @@ data Character = Character
   }
   deriving (Show, Eq)
 
+genRandomList :: Int -> IO [Int]
+genRandomList n = sequence $ replicate n $ randomRIO (1,6::Int)
+
 modifier :: Int -> Int
-modifier =
-  error "You need to implement this function."
+modifier point = (point - 10) `div` 2
 
 ability :: Gen Int
-ability =
-  error "You need to implement this generator."
+ability = sum randomList - minimum randomList
+    where randomList = genRandomList 4
 
 character :: Gen Character
 character =

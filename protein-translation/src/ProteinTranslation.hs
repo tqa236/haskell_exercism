@@ -1,4 +1,6 @@
 module ProteinTranslation(proteins) where
 
 proteins :: String -> Maybe [String]
-proteins = error "You need to implement this function!"
+proteins rna
+    | take 3 rna == "AUG" = Just $ ["Methionine"] ++ (proteins (drop 3 rna))
+    | otherwise = Nothing
