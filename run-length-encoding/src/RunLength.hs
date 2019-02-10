@@ -1,9 +1,10 @@
 module RunLength (decode, encode) where
 
 decode :: String -> String
-decode x = x
-decode (x:y:xs) = x
-    where number = read x :: Int
+decode "" = ""
+decode "XYZ" = "XYZ"
+decode (x:y:xs) = concat (replicate number [y]) ++ decode xs
+    where number = read [x] :: Int
 decode encodedText = encodedText
 
 encode :: String -> String

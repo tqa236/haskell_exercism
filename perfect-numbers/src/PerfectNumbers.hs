@@ -13,7 +13,7 @@ classify number
     | otherwise = Just Deficient
     where squareRoot = isqrt number
           divisor = filter (\x -> number `mod` x == 0) [1..squareRoot]
-          allDivisor = map (\x -> number `div` x) divisor
+          allDivisor = map (number `div`) divisor
           aliquotSum
             | isqrt number ^2 == number = sumDivisors - isqrt number
             | otherwise = sumDivisors

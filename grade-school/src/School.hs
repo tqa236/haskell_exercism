@@ -6,7 +6,7 @@ import qualified Data.Map as Map
 type School = [(String, Int)]
 
 add :: Int -> String -> School -> School
-add gradeNum student school = Map.insert gradeNum [student] school
+add gradeNum student = Map.insert gradeNum [student]
 
 empty :: School
 empty = empty

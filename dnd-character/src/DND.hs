@@ -20,7 +20,7 @@ data Character = Character
   deriving (Show, Eq)
 
 genRandomList :: Int -> IO [Int]
-genRandomList n = sequence $ replicate n $ randomRIO (1,6::Int)
+genRandomList n = Control.Monad.replicateM n (randomRIO (1, 6 :: Int))
 
 modifier :: Int -> Int
 modifier point = (point - 10) `div` 2

@@ -9,5 +9,5 @@ findFewestCoins2 :: Integer -> [Integer] -> [Integer]
 findFewestCoins2 target coins
     | null coins = []
     | target < head coins = findFewestCoins2 target (tail coins)
-    | target >= head coins = (findFewestCoins2 (target - (head coins)) coins) ++ [head coins]
+    | target >= head coins = findFewestCoins2 (target - head coins) coins ++ [head coins]
     | otherwise = []
