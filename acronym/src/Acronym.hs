@@ -4,7 +4,8 @@ import           Data.Char
 import           Data.List
 
 abbreviate :: String -> String
-abbreviate xs = filter isUpper (upperFirst xs)
-    where upperFirst = concatMap (\(c:cs) -> toUpper c : lowerString cs)
-           . groupBy (\a b -> isSpace a == isSpace b)
-          lowerString = map toLower
+abbreviate xs = takeFirst $ notUpperToSpace $ upperFirst $ filter (/= '\'') xs
+    where upperFirst = concatMap (\(c:cs) -> toUpper c : cs)
+           . groupBy (\a b -> (not . isAlpha) a == (not . isAlpha) b)
+          notUpperToSpace = map (\c -> if (not . isUpper) c then ' ' else c)
+          takeFirst phrase = concatMap (take 1) $ words phrase
