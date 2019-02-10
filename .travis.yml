@@ -1,52 +1,40 @@
-sudo: false              # Use the container-based infrastructure.
+# This is the simple Travis configuration, which is intended for use
+# on applications which do not require cross-platform and
+# multiple-GHC-version support. For more information and other
+# options, see:
+#
+# https://docs.haskellstack.org/en/stable/travis_ci/
+#
+# Copy these contents into the root directory of your Github project in a file
+# named .travis.yml
 
+# Choose a build environment
+dist: xenial
+
+# Do not choose a language; we provide our own build tools.
+language: generic
+
+# Caching so the next build will be fast too.
+cache:
+  directories:
+  - $HOME/.stack
+
+# Ensure necessary system libraries are present
 addons:
   apt:
     packages:
-      - libgmp-dev       # Stack's GHC depends on this.
-
-cache:
-  timeout: 600           # The cache is too big to upload in 180 seconds.
-  directories:
-    - $HOME/.stack       # Global stack's cache.
-    - $HOME/.foldercache # Per exercise `.stack-work` cache.
-
-env:
- - RESOLVER="lts-12.4" CURRENT="YES"  # Equal to each stack.yaml.
- - RESOLVER="nightly"                 # Latest nightly snapshot.
-
-matrix:
-  allow_failures:             # The snapshot `nightly` is just an alias to
-    - env: RESOLVER="nightly" # the newest version released. We don't want
-  fast_finish: true           # Travis to fail on new incompatible releases.
+      - libgmp-dev
 
 before_install:
- - mkdir -p ${HOME}/bin                        # Create folder for stack.
- - export PATH="${HOME}/bin:$PATH"             # For stack
+# Download and unpack the stack executable
+- mkdir -p ~/.local/bin
+- export PATH=$HOME/.local/bin:$PATH
+- travis_retry curl -L https://get.haskellstack.org/stable/linux-x86_64.tar.gz | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
 
 install:
- - travis_retry curl -L https://www.stackage.org/stack/linux-x86_64 -o pack.tgz
- - tar xzf pack.tgz --wildcards --strip-components=1 -C ${HOME}/bin '*/stack'
- - stack --resolver ${RESOLVER} --install-ghc install hlint
- - stack --version
+# Build dependencies
+- stack --no-terminal --install-ghc test --only-dependencies
 
 script:
- - |
-    differing_stack=""
-    expected_stack=$(grep 'RESOLVER.*CURRENT' .travis.yml | head -1 | cut -d'"' -f2)
-    echo "All exercises should have resolver $expected_stack"
-    for exercise in ${TRAVIS_BUILD_DIR}/exercises/*/ ; do
-        # This might allow lts-xyz for expected_stack=x.z, but hopefully `stack` fails in that case!
-        # Not a mistake we expect people to make
-        if grep -v "^resolver: ${expected_stack}\$" $exercise/stack.yaml; then
-          differing_stack="$differing_stack $(basename "$exercise")"
-        fi
-    done
-    if [ -n "$differing_stack" ]; then
-        echo "The following exercises have a different stack.yaml resolver:$differing_stack"
-        echo "They should instead be $expected_stack"
-        exit 1
-    fi
- - |
-    set -e
-    make lint test-all
+# Build the package, its tests, and its docs and run the tests
+- stack --no-terminal test --haddock --no-haddock-deps
