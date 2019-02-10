@@ -2,7 +2,7 @@ module TwelveDays (recite) where
 
 recite :: Int -> Int -> [String]
 recite start stop
-    | start <= stop = (reciteOneVerse start) ++ (recite (start + 1) stop)
+    | start <= stop = reciteOneVerse start ++ recite (start + 1) stop
     | otherwise = []
 
 reciteOneVerse :: Int -> [String]
