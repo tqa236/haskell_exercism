@@ -1,10 +1,10 @@
 {-# LANGUAGE RecordWildCards #-}
 
-import Data.Foldable     (for_)
-import Test.Hspec        (Spec, describe, it, shouldBe)
-import Test.Hspec.Runner (configFastFail, defaultConfig, hspecWith)
+import           Data.Foldable     (for_)
+import           Test.Hspec        (Spec, describe, it, shouldBe)
+import           Test.Hspec.Runner (configFastFail, defaultConfig, hspecWith)
 
-import RunLength (encode, decode)
+import           RunLength         (decode, encode)
 
 main :: IO ()
 main = hspecWith defaultConfig {configFastFail = True} specs
