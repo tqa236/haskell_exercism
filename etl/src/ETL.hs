@@ -1,6 +1,10 @@
 module ETL (transform) where
 
-import Data.Map (Map)
+import           Data.Char
+import           Data.Map  (Map, fromList, toList)
 
 transform :: Map a String -> Map Char a
-transform legacyData = error "You need to implement this function."
+transform legacyData = fromList
+                        $ concatMap
+                        (\(k, vs) -> [(v, k) | v <- map toLower vs])
+                        (toList legacyData)
