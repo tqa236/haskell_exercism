@@ -1,11 +1,11 @@
 {-# OPTIONS_GHC -fno-warn-type-defaults #-}
 
-import Data.Either       (isLeft)
-import Data.Map          (fromList)
-import Test.Hspec        (Spec, describe, it, shouldBe, shouldSatisfy)
-import Test.Hspec.Runner (configFastFail, defaultConfig, hspecWith)
+import           Data.Either       (isLeft)
+import           Data.Map          (fromList)
+import           Test.Hspec        (Spec, describe, it, shouldBe, shouldSatisfy)
+import           Test.Hspec.Runner (configFastFail, defaultConfig, hspecWith)
 
-import DNA (nucleotideCounts, Nucleotide(..))
+import           DNA               (Nucleotide (..), nucleotideCounts)
 
 main :: IO ()
 main = hspecWith defaultConfig {configFastFail = True} specs

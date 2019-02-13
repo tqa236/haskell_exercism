@@ -12,7 +12,7 @@ module Matrix
     , transpose
     ) where
 
-import Data.Vector (Vector)
+import           Data.Vector (Vector)
 
 data Matrix a = Dummy deriving (Eq, Show)
 
@@ -38,7 +38,7 @@ row :: Int -> Matrix a -> Vector a
 row x matrix = error "You need to implement this function."
 
 rows :: Matrix a -> Int
-rows matrix = error "You need to implement this function."
+rows matrix = [read a]
 
 shape :: Matrix a -> (Int, Int)
 shape matrix = error "You need to implement this function."
