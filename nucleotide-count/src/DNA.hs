@@ -1,18 +1,22 @@
 module DNA (nucleotideCounts, Nucleotide(..)) where
 
+import           Data.Either.Combinators (mapBoth)
 import           Data.List
-import           Data.Map  (Map, findWithDefault, fromList)
+import           Data.Map                (Map, fromListWith)
 
-data Nucleotide = A | C | G | T deriving (Eq, Ord, Show, Bounded)
+data Nucleotide = A | C | G | T deriving (Eq, Ord, Show, Enum, Bounded)
+
+nucs :: [Nucleotide]
+nucs = [minBound..maxBound] -- [minBound..] works too, so does [A..] or [A..T]
 
 nucleotideCounts :: String -> Either String (Map Nucleotide Int)
 nucleotideCounts xs = countAll
-    where countAll = fromList
+    where countAll = fromListWith (+)
+                      -- . mapBoth (\x -> x) (\x -> (head x, length x))
                       . map (\x -> (head x, length x))
                       . group
                       . sort
                       <$> traverse convertStrand xs
-          -- final = fromList . map(\x -> (x, findWithDefault 0 x countAll)) ([Right A, Right C, Right G, Right T])
 
 convertStrand :: Char -> Either String Nucleotide
 convertStrand c = case c of 'A' -> Right A

@@ -9,7 +9,8 @@ library:
   exposed-modules: DNA
   source-dirs: src
   ghc-options: -Wall -XTupleSections
-  # dependencies:
+  dependencies:
+  - either
   # - foo       # List here the packages you
   # - bar       # want to use in your solution.
 
