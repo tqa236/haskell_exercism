@@ -9,11 +9,11 @@ data Nucleotide = A | C | G | T deriving (Eq, Ord, Show, Enum, Bounded)
 nucs :: [Nucleotide]
 nucs = [minBound..maxBound] -- [minBound..] works too, so does [A..] or [A..T]
 
-nucleotideCounts :: String -> Either String (Map Nucleotide Int)
+nucleotideCounts :: String -> Either String (Map Nucleotide Integer)
 nucleotideCounts xs = fromListWith (+) <$> countAll
     where countAll = (map (, 0) nucs ++) <$> mapM convertStrand xs
 
-convertStrand :: Char -> Either String (Nucleotide, Int)
+convertStrand :: Char -> Either String (Nucleotide, Integer)
 convertStrand c = mapBoth (const "Invalid strand") (, 1) (readEither c)
 
 readEither :: Char -> Either String Nucleotide
