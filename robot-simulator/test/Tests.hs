@@ -1,19 +1,10 @@
 {-# OPTIONS_GHC -fno-warn-type-defaults #-}
 
-import Test.Hspec        (Spec, describe, it, shouldBe)
-import Test.Hspec.Runner (configFastFail, defaultConfig, hspecWith)
+import           Test.Hspec        (Spec, describe, it, shouldBe)
+import           Test.Hspec.Runner (configFastFail, defaultConfig, hspecWith)
 
-import Robot
-  ( Bearing ( East
-            , North
-            , South
-            , West
-            )
-  , bearing
-  , coordinates
-  , mkRobot
-  , move
-  )
+import           Robot             (Bearing (East, North, South, West), bearing,
+                                    coordinates, mkRobot, move)
 
 main :: IO ()
 main = hspecWith defaultConfig {configFastFail = True} specs
