@@ -7,6 +7,6 @@ data BowlingError = IncompleteGame
   deriving (Eq, Show)
 
 score :: [Int] -> Either BowlingError Int
-score rolls = Right $ sum $ turnPoints
+score rolls = Right $ sum turnPoints
     where turns = chunksOf 2 rolls
-          turnPoints = map (\x -> sum x) turns
+          turnPoints = map sum turns
