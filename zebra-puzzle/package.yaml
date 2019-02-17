@@ -1,16 +1,14 @@
-name: atbash-cipher
-version: 1.2.0.6
+name: zebra-puzzle
+version: 1.1.0.5
 
 dependencies:
   - base
 
 library:
-  exposed-modules: Atbash
+  exposed-modules: ZebraPuzzle
   source-dirs: src
   ghc-options: -Wall
-  dependencies:
-  - containers
-  - split
+  # dependencies:
   # - foo       # List here the packages you
   # - bar       # want to use in your solution.
 
@@ -19,5 +17,5 @@ tests:
     main: Tests.hs
     source-dirs: test
     dependencies:
-      - atbash-cipher
+      - zebra-puzzle
       - hspec

@@ -1,16 +1,15 @@
-name: atbash-cipher
-version: 1.2.0.6
+name: forth
+version: 1.7.0.11
 
 dependencies:
   - base
+  - text
 
 library:
-  exposed-modules: Atbash
+  exposed-modules: Forth
   source-dirs: src
   ghc-options: -Wall
-  dependencies:
-  - containers
-  - split
+  # dependencies:
   # - foo       # List here the packages you
   # - bar       # want to use in your solution.
 
@@ -19,5 +18,5 @@ tests:
     main: Tests.hs
     source-dirs: test
     dependencies:
-      - atbash-cipher
+      - forth
       - hspec

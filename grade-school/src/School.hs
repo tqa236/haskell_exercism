@@ -4,7 +4,7 @@ import           Data.List
 import           Data.Map  (Map)
 import qualified Data.Map  as Map
 
-type School = Map Int [String]
+data School = School Map Int [String]
 
 add :: Int -> String -> School -> School
 add gradeNum student = Map.fromList [gradeNum, [student]]

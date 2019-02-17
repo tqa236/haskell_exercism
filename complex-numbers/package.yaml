@@ -1,16 +1,14 @@
-name: atbash-cipher
-version: 1.2.0.6
+name: complex-numbers
+version: 1.3.0.6
 
 dependencies:
   - base
 
 library:
-  exposed-modules: Atbash
+  exposed-modules: ComplexNumbers
   source-dirs: src
   ghc-options: -Wall
-  dependencies:
-  - containers
-  - split
+  # dependencies:
   # - foo       # List here the packages you
   # - bar       # want to use in your solution.
 
@@ -19,5 +17,5 @@ tests:
     main: Tests.hs
     source-dirs: test
     dependencies:
-      - atbash-cipher
+      - complex-numbers
       - hspec

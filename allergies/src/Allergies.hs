@@ -1,5 +1,7 @@
 module Allergies (Allergen(..), allergies, isAllergicTo) where
 
+import           Data.Bits (testBit)
+
 data Allergen = Eggs
               | Peanuts
               | Shellfish
@@ -8,10 +10,10 @@ data Allergen = Eggs
               | Chocolate
               | Pollen
               | Cats
-              deriving (Eq, Show)
+              deriving (Eq, Show, Enum)
 
 allergies :: Int -> [Allergen]
-allergies score = error "You need to implement this function."
+allergies score = filter (`isAllergicTo` score) [Eggs .. Cats]
 
 isAllergicTo :: Allergen -> Int -> Bool
-isAllergicTo allergen score = error "You need to implement this function."
+isAllergicTo allergen score = testBit score $ fromEnum allergen
