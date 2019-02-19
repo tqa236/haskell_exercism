@@ -10,28 +10,31 @@ module LinkedList
     , toList
     ) where
 
-data LinkedList a = Dummy deriving (Eq, Show)
+data LinkedList a = Empty | Node a (LinkedList a) deriving (Eq, Show)
 
 datum :: LinkedList a -> a
-datum linkedList = error "You need to implement this function."
+datum (Node x _) = x
 
 fromList :: [a] -> LinkedList a
-fromList xs = error "You need to implement this function."
+fromList = foldr Node Empty
 
 isNil :: LinkedList a -> Bool
-isNil linkedList = error "You need to implement this function."
+isNil Empty = True
+isNil _     = False
 
 new :: a -> LinkedList a -> LinkedList a
-new x linkedList = error "You need to implement this function."
+new = Node
 
 next :: LinkedList a -> LinkedList a
-next linkedList = error "You need to implement this function."
+next Empty         = Empty
+next (Node _ prev) = prev
 
 nil :: LinkedList a
-nil = error "You need to implement this function."
+nil = Empty
 
 reverseLinkedList :: LinkedList a -> LinkedList a
-reverseLinkedList linkedList = error "You need to implement this function."
+reverseLinkedList xs = foldl (flip Node) Empty $ toList xs
 
 toList :: LinkedList a -> [a]
-toList linkedList = error "You need to implement this function."
+toList Empty         = []
+toList (Node x prev) = x : toList prev

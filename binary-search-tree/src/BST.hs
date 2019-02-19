@@ -10,28 +10,35 @@ module BST
     , toList
     ) where
 
-data BST a = Dummy deriving (Eq, Show)
+data BST a = Leaf | Node a (BST a) (BST a) deriving (Eq, Show)
 
 bstLeft :: BST a -> Maybe (BST a)
-bstLeft tree = error "You need to implement this function."
+bstLeft Leaf                = Nothing
+bstLeft (Node _ leftTree _) = Just leftTree
 
 bstRight :: BST a -> Maybe (BST a)
-bstRight tree = error "You need to implement this function."
+bstRight Leaf                 = Nothing
+bstRight (Node _ _ rightTree) = Just rightTree
 
 bstValue :: BST a -> Maybe a
-bstValue tree = error "You need to implement this function."
+bstValue Leaf         = Nothing
+bstValue (Node x _ _) = Just x
 
 empty :: BST a
-empty = error "You need to implement this function."
+empty = Leaf
 
 fromList :: Ord a => [a] -> BST a
-fromList xs = error "You need to implement this function."
+fromList = foldl (flip insert) Leaf
 
 insert :: Ord a => a -> BST a -> BST a
-insert x tree = error "You need to implement this function."
+insert x Leaf                        = Node x Leaf Leaf
+insert x (Node y leftTree rightTree)
+    | x <= y = Node y (insert x leftTree) rightTree
+    | otherwise = Node y leftTree (insert x rightTree)
 
 singleton :: a -> BST a
-singleton x = error "You need to implement this function."
+singleton x = Node x Leaf Leaf
 
 toList :: BST a -> [a]
-toList tree = error "You need to implement this function."
+toList Leaf = []
+toList (Node x leftTree rightTree) = toList leftTree ++ [x] ++ toList rightTree

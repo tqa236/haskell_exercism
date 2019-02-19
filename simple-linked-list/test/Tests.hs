@@ -1,22 +1,15 @@
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 
-import Test.Hspec                (Spec, it, shouldBe)
-import Test.Hspec.Runner         (configFastFail, defaultConfig, hspecWith)
-import Test.QuickCheck           (property)
-import Test.QuickCheck.Arbitrary (Arbitrary, arbitrary)
+import           Test.Hspec                (Spec, it, shouldBe)
+import           Test.Hspec.Runner         (configFastFail, defaultConfig,
+                                            hspecWith)
+import           Test.QuickCheck           (property)
+import           Test.QuickCheck.Arbitrary (Arbitrary, arbitrary)
 
-import LinkedList
-  ( datum
-  , fromList
-  , isNil
-  , next
-  , new
-  , nil
-  , reverseLinkedList
-  , toList
-  , LinkedList
-  )
+import           LinkedList                (LinkedList, datum, fromList, isNil,
+                                            new, next, nil, reverseLinkedList,
+                                            toList)
 
 instance (Arbitrary a) => Arbitrary (LinkedList a) where
   arbitrary = fromList <$> arbitrary

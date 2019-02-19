@@ -1,10 +1,10 @@
 {-# OPTIONS_GHC -fno-warn-type-defaults #-}
 
-import Data.Foldable     (for_)
-import Test.Hspec        (Spec, describe, it, shouldBe)
-import Test.Hspec.Runner (configFastFail, defaultConfig, hspecWith)
+import           Data.Foldable     (for_)
+import           Test.Hspec        (Spec, describe, it, shouldBe)
+import           Test.Hspec.Runner (configFastFail, defaultConfig, hspecWith)
 
-import Clock (addDelta, fromHourMin, toString)
+import           Clock             (addDelta, fromHourMin, toString)
 
 main :: IO ()
 main = hspecWith defaultConfig {configFastFail = True} specs
