@@ -13,3 +13,8 @@ boardString white black = concatMap toBoard (take 128 [1,2..])
 
 canAttack :: (Int, Int) -> (Int, Int) -> Bool
 canAttack queenA queenB = error "You need to implement this function"
+
+whiteSymbol :: Maybe (Int, Int) -> Char
+whiteSymbol white
+    | isNothing white = '_'
+    | otherwise = 'W'
