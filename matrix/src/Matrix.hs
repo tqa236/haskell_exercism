@@ -14,7 +14,7 @@ module Matrix
 
 import           Data.Vector (Vector)
 
-data Matrix a = Dummy deriving (Eq, Show)
+newtype Matrix a = Matrix [[a]] deriving (Eq, Show)
 
 cols :: Matrix a -> Int
 cols matrix = error "You need to implement this function."
@@ -29,7 +29,8 @@ fromList :: [[a]] -> Matrix a
 fromList xss = error "You need to implement this function."
 
 fromString :: Read a => String -> Matrix a
-fromString xs = error "You need to implement this function."
+fromString xs = Matrix $ map (map read . words) allLines
+    where allLines = lines xs
 
 reshape :: (Int, Int) -> Matrix a -> Matrix a
 reshape dimensions matrix = error "You need to implement this function."
@@ -38,7 +39,7 @@ row :: Int -> Matrix a -> Vector a
 row x matrix = error "You need to implement this function."
 
 rows :: Matrix a -> Int
-rows matrix = [read a]
+rows matrix = error "You need to implement this function."
 
 shape :: Matrix a -> (Int, Int)
 shape matrix = error "You need to implement this function."
