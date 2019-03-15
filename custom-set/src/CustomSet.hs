@@ -14,7 +14,7 @@ module CustomSet
   , union
   ) where
 
-import Prelude hiding (null)
+import           Prelude hiding (null)
 
 data CustomSet a = Dummy deriving (Eq, Show)
 
