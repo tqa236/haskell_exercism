@@ -14,7 +14,7 @@ module Matrix
 
 import           Data.Vector (Vector, (!))
 
-data Matrix a = Vector (Vector a) deriving (Eq, Show)
+newtype Matrix a = Vector (Vector a) deriving (Eq, Show)
 
 cols :: Matrix a -> Int
 cols matrix = error "You need to implement this function."
