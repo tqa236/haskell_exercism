@@ -12,7 +12,13 @@
 dist: xenial
 
 # Do not choose a language; we provide our own build tools.
-language: generic
+# language: generic
+language: haskell
+ghc:
+  - "7.10"
+  - "7.8"
+  - "7.6"
+  - "8.4.1"
 
 # Caching so the next build will be fast too.
 cache:
@@ -34,12 +40,11 @@ before_install:
 install:
 # Build dependencies
 - stack --no-terminal --install-ghc test --only-dependencies
-- stack install codecov-haskell
 
 script:
 # Build the package, its tests, and its docs and run the tests
 - stack --no-terminal test --haddock --no-haddock-deps
 
 after_script:
-# - cabal install codecov-haskell
+- cabal install codecov-haskell
 - codecov-haskell
