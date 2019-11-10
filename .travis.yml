@@ -12,7 +12,13 @@
 dist: xenial
 
 # Do not choose a language; we provide our own build tools.
-language: generic
+# language: generic
+language: haskell
+ghc:
+  - "7.10"
+  - "7.8"
+  - "7.6"
+  - "8.4.1"
 
 # Caching so the next build will be fast too.
 cache:
