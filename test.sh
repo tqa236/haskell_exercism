@@ -5,6 +5,6 @@ for path in */; do
     # [ "${dirname}" != "coverage" ] || continue # Use for covedev
     cd "$dirname" || exit
     echo "$dirname"
-    stack test
+    stack test --coverage
     cd ..
 done
