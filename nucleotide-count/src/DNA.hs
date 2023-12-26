@@ -1,18 +1,19 @@
-{-# LANGUAGE TupleSections #-}
 module DNA (nucleotideCounts, Nucleotide(..)) where
 
-import           Data.Either.Combinators (mapBoth)
-import           Data.Map                (Map, fromListWith)
-import           Text.Read               (readEither)
+import Data.Map (Map, insertWith, fromList)
+import Text.Read (readEither)
+import Control.Monad (foldM)
 
-data Nucleotide = A | C | G | T deriving (Eq, Ord, Show, Enum, Bounded, Read)
+data Nucleotide = A | C | G | T deriving (Eq, Ord, Show, Read)
 
-nucs :: [Nucleotide]
-nucs = [minBound..maxBound] -- [minBound..] works too, so does [A..] or [A..T]
+type NucleotideCounts = Map Nucleotide Int
 
-nucleotideCounts :: String -> Either String (Map Nucleotide Integer)
-nucleotideCounts xs = fromListWith (+) . (map (, 0) nucs ++)
-                        <$> mapM convertStrand xs
+countDNA :: NucleotideCounts -> Char -> Either String NucleotideCounts
 
-convertStrand :: Char -> Either String (Nucleotide, Integer)
-convertStrand c = mapBoth (const "Invalid strand") (, 1) (readEither [c])
+countDNA m x =
+  readEither [x] >>=
+    \n -> return $ insertWith (+) n 1 m
+
+nucleotideCounts :: String -> Either String NucleotideCounts
+nucleotideCounts =
+  foldM countDNA (fromList [(A, 0), (C, 0), (G, 0), (T, 0)])
