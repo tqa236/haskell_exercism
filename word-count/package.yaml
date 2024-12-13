@@ -1,5 +1,5 @@
 name: word-count
-version: 1.2.0.6
+version: 1.4.0.8
 
 dependencies:
   - base
@@ -8,8 +8,7 @@ library:
   exposed-modules: WordCount
   source-dirs: src
   ghc-options: -Wall
-  dependencies:
-  - MissingH
+  # dependencies:
   # - foo       # List here the packages you
   # - bar       # want to use in your solution.
 

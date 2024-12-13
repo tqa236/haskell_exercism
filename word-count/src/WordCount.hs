@@ -1,10 +1,16 @@
 module WordCount (wordCount) where
 
-import           Data.Char
-import           Data.List
-import           Data.List.Utils (replace)
+import Data.Char (isAlphaNum, toLower)
+import Data.List (group, sort)
 
 wordCount :: String -> [(String, Int)]
-wordCount xs = map (\w -> (head w, length w)) $ group $ sort $ words noQuotation
-    where sentence = map (\c -> if not (isAlphaNum c || (c == '\'')) then ' ' else toLower c) xs
-          noQuotation = replace " \'" " " (replace "\' " " " sentence)
+wordCount text =
+  let normalizeWord = map toLower 
+      isWordChar c = isAlphaNum c || c == '\''
+      stripPunctuation = dropWhile (not . isAlphaNum) . reverse . dropWhile (not . isAlphaNum) . reverse
+      tokenize s = case dropWhile (not . isWordChar) s of
+                    "" -> []
+                    s' -> let (word, rest) = span isWordChar s'
+                          in stripPunctuation word : tokenize rest
+      sortedWords = sort $ map normalizeWord (tokenize text)
+  in map (\ws -> (head ws, length ws)) (group sortedWords)
