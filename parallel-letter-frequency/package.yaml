@@ -5,6 +5,7 @@ dependencies:
   - base
   - containers
   - text
+  - parallel
 
 library:
   exposed-modules: Frequency
@@ -13,14 +14,6 @@ library:
   # dependencies:
   # - foo       # List here the packages you
   # - bar       # want to use in your solution.
-
-tests:
-  test:
-    main: Tests.hs
-    source-dirs: test
-    dependencies:
-      - parallel-letter-frequency
-      - hspec
 
 benchmarks:
   bench:
@@ -31,3 +24,11 @@ benchmarks:
     dependencies:
       - parallel-letter-frequency
       - criterion
+
+tests:
+  test:
+    main: Tests.hs
+    source-dirs: test
+    dependencies:
+      - parallel-letter-frequency
+      - hspec
