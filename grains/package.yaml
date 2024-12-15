@@ -8,8 +8,7 @@ library:
   exposed-modules: Grains
   source-dirs: src
   ghc-options: -Wall
-  dependencies:
-  - integer-logarithms
+  # dependencies:
   # - foo       # List here the packages you
   # - bar       # want to use in your solution.
 
