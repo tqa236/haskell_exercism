@@ -1,11 +1,19 @@
-import           Test.Hspec        (Spec, it, shouldBe)
-import           Test.Hspec.Runner (configFastFail, defaultConfig, hspecWith)
+import Test.Hspec        (Spec, it, shouldBe, shouldNotBe)
+import Test.Hspec.Runner (configFailFast, defaultConfig, hspecWith)
 
-import           BST               (bstLeft, bstRight, bstValue, empty,
-                                    fromList, insert, singleton, toList)
+import BST
+  ( bstLeft
+  , bstRight
+  , bstValue
+  , empty
+  , fromList
+  , insert
+  , singleton
+  , toList
+  )
 
 main :: IO ()
-main = hspecWith defaultConfig {configFastFail = True} specs
+main = hspecWith defaultConfig {configFailFast = True} specs
 
 specs :: Spec
 specs = do
@@ -30,6 +38,11 @@ specs = do
       let t = insert 5 (singleton int4)
       bstValue t `shouldBe` Just 4
       (bstRight t >>= bstValue) `shouldBe` Just 5
+
+    it "retrieves branches even when they are empty" $ do
+      let t = singleton int4
+      bstLeft t `shouldNotBe` Nothing
+      bstRight t `shouldNotBe` Nothing
 
     it "empty list to tree" $
       fromList noInts `shouldBe` empty
