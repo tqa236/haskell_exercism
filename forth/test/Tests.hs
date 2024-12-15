@@ -4,7 +4,7 @@ import Control.Monad     (foldM)
 import Test.Hspec        (Spec, describe, it, shouldBe)
 import Test.Hspec.Runner (configFastFail, defaultConfig, hspecWith)
 
-import Forth (ForthError(..), empty, evalText, toList)
+import Forth (ForthError(..), emptyState, evalText, toList)
 
 main :: IO ()
 main = hspecWith defaultConfig {configFastFail = True} specs
@@ -12,7 +12,7 @@ main = hspecWith defaultConfig {configFastFail = True} specs
 specs :: Spec
 specs = do
 
-    let runTexts = fmap toList . foldM (flip evalText) empty
+    let runTexts = fmap toList . foldM (flip evalText) emptyState
 
     describe "parsing and numbers" $
       it "numbers just get pushed onto the stack" $
@@ -153,3 +153,5 @@ specs = do
       it "definitions are case-insensitive" $
         runTexts [ ": SWAP DUP Dup dup ;"
                  , "1 swap"               ] `shouldBe` Right [1, 1, 1, 1]
+
+-- ab8d473c39114365fb88f8406ea7a1783f0a40f4

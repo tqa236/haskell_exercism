@@ -1,10 +1,10 @@
 {-# LANGUAGE RecordWildCards #-}
 
-import           Data.Foldable     (for_)
-import           Test.Hspec        (Spec, describe, it, shouldBe)
-import           Test.Hspec.Runner (configFastFail, defaultConfig, hspecWith)
+import Data.Foldable     (for_)
+import Test.Hspec        (Spec, describe, it, shouldBe)
+import Test.Hspec.Runner (configFastFail, defaultConfig, hspecWith)
 
-import           Transpose         (transpose)
+import Transpose (transpose)
 
 main :: IO ()
 main = hspecWith defaultConfig {configFastFail = True} specs
@@ -179,3 +179,5 @@ cases = [ Case { description = "empty string"
                             ]
                }
         ]
+
+-- 476e7b6f12efa841bd69756dea775a6ea43a9a33

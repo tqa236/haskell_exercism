@@ -14,10 +14,10 @@ isValid :: String -> Bool
 isValid n
     | number == "0" = False
     | n == "1" = False
-    | (sum oddList + sum evenList - substraction) `mod` 10 == 0 = True
+    | (sum(oddList) + sum(evenList) - substraction) `mod` 10 == 0 = True
     | otherwise = False
     where number = reverse (filter isDigit n)
-          digits = map (read . (:"")) number :: [Int]
+          digits = map (read . (:"")) (number) :: [Int]
           evenList = evens digits
           oddList = map (2 *) (odds digits)
           substraction = 9 * length( filter (> 9) oddList)

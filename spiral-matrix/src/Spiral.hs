@@ -1,7 +1,4 @@
 module Spiral (spiral) where
 
 spiral :: Int -> [[Int]]
-spiral size
-    | size == 0 = []
-    | size == 1 = [[1]]
-    | otherwise = [[1]]
+spiral size = error "You need to implement this function."

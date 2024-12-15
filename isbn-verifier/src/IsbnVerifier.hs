@@ -17,5 +17,5 @@ isbn number
     | length digits == 10 = isbnCheck digits
     | character /= "X" = False
     | otherwise = isbnCheck digits
-    where digits = digs (read (filter isDigit number) :: Int)
-          character = filter isAlpha number
+    where digits = digs (read (filter (isDigit) number) :: Int)
+          character = filter (isAlpha) number

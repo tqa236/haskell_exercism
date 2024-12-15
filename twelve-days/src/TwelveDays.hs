@@ -2,11 +2,13 @@ module TwelveDays (recite) where
 
 recite :: Int -> Int -> [String]
 recite start stop
-    | start <= stop = reciteOneVerse start ++ recite (start + 1) stop
+    | start <= stop = (reciteOneVerse start) ++ (recite (start + 1) stop)
     | otherwise = []
 
 reciteOneVerse :: Int -> [String]
 reciteOneVerse stop = ["On the " ++ days ++ " day of Christmas my true love gave to me: " ++ gifts stop ++"."]
+    -- | stop > 1 = ["On the " ++ days ++ " day of Christmas my true love gave to me: " ++ gifts stop ++"."]
+    -- | otherwise = ["On the " ++ days ++ " day of Christmas my true love gave to me: " ++ gifts stop ++"."]
     where days = case stop of
             1  -> "first"
             2  -> "second"

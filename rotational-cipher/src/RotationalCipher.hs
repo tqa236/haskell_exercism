@@ -8,4 +8,4 @@ addAscii n c | isUpper c = chr $ ((ord c - ord 'A' + n) `mod` 26) + ord 'A'
              | otherwise = c
 
 rotate :: Int -> String -> String
-rotate number = map (addAscii number)
+rotate number phrase = map (addAscii number) phrase

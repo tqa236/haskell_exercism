@@ -1,5 +1,10 @@
 # SGF Parsing
 
+Welcome to SGF Parsing on Exercism's Haskell Track.
+If you need help running the tests or submitting your code, check out `HELP.md`.
+
+## Instructions
+
 Parsing a Smart Game Format string.
 
 [SGF](https://en.wikipedia.org/wiki/Smart_Game_Format) is a standard format for
@@ -65,8 +70,6 @@ structure of properties. You do not need to encode knowledge about the
 data types of properties, just use the rules for the
 [text](http://www.red-bean.com/sgf/sgf4.html#text) type everywhere.
 
-## Hints
-
 The Sgf module should export a parseSgf module with the following signature:
 
 ```haskell
@@ -88,59 +91,18 @@ type SgfNode = Map Text [Text]
 The parsec library is part of the Haskell Platform. Please use it to
 your advantage.
 
+## Source
 
+### Contributed to by
 
-## Getting Started
-
-For installation and learning resources, refer to the
-[exercism help page](http://exercism.io/languages/haskell).
-
-## Running the tests
-
-To run the test suite, execute the following command:
-
-```bash
-stack test
-```
-
-#### If you get an error message like this...
-
-```
-No .cabal file found in directory
-```
-
-You are probably running an old stack version and need
-to upgrade it.
-
-#### Otherwise, if you get an error message like this...
-
-```
-No compiler found, expected minor version match with...
-Try running "stack setup" to install the correct GHC...
-```
-
-Just do as it says and it will download and install
-the correct compiler version:
-
-```bash
-stack setup
-```
-
-## Running *GHCi*
-
-If you want to play with your solution in GHCi, just run the command:
-
-```bash
-stack ghci
-```
-
-## Feedback, Issues, Pull Requests
-
-The [exercism/haskell](https://github.com/exercism/haskell) repository on
-GitHub is the home for all of the Haskell exercises.
-
-If you have feedback about an exercise, or want to help implementing a new
-one, head over there and create an issue.  We'll do our best to help you!
-
-## Submitting Incomplete Solutions
-It's possible to submit an incomplete solution so you can see how others have completed the exercise.
+- @cmccandless
+- @elyashiv
+- @iHiD
+- @kytrinyx
+- @lpalma
+- @navossoc
+- @petertseng
+- @ppartarr
+- @rbasso
+- @sshine
+- @tejasbubane

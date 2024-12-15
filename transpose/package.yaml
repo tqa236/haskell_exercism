@@ -8,8 +8,7 @@ library:
   exposed-modules: Transpose
   source-dirs: src
   ghc-options: -Wall
-  dependencies:
-  - split
+  # dependencies:
   # - foo       # List here the packages you
   # - bar       # want to use in your solution.
 

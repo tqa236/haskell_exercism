@@ -5,6 +5,3 @@ largestPalindrome minFactor maxFactor = error "You need to implement this functi
 
 smallestPalindrome :: Integer -> Integer -> Maybe (Integer, [(Integer, Integer)])
 smallestPalindrome minFactor maxFactor = error "You need to implement this function."
-
-generateProduct:: Integer -> Integer -> [Integer]
-generateProduct minFactor maxFactor = [minFactor]

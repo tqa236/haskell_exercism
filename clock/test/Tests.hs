@@ -1,13 +1,13 @@
 {-# OPTIONS_GHC -fno-warn-type-defaults #-}
 
-import           Data.Foldable     (for_)
-import           Test.Hspec        (Spec, describe, it, shouldBe)
-import           Test.Hspec.Runner (configFastFail, defaultConfig, hspecWith)
+import Data.Foldable     (for_)
+import Test.Hspec        (Spec, describe, it, shouldBe)
+import Test.Hspec.Runner (configFailFast, defaultConfig, hspecWith)
 
-import           Clock             (addDelta, fromHourMin, toString)
+import Clock (addDelta, fromHourMin, toString)
 
 main :: IO ()
-main = hspecWith defaultConfig {configFastFail = True} specs
+main = hspecWith defaultConfig {configFailFast = True} specs
 
 specs :: Spec
 specs = do
@@ -52,6 +52,7 @@ specs = do
       , ("negative minutes"                                     ,    1,   -40, "00:20")
       , ("negative minutes roll over"                           ,    1,  -160, "22:20")
       , ("negative minutes roll over continuously"              ,    1, -4820, "16:40")
+      , ("negative sixty minutes is previous hour"              ,    2,   -60, "01:00")
       , ("negative hour and minutes both roll over"             ,  -25,  -160, "20:20")
       , ("negative hour and minutes both roll over continuously", -121, -5810, "22:10") ]
 

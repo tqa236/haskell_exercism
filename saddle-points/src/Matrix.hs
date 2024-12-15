@@ -1,10 +1,6 @@
 module Matrix (saddlePoints) where
 
-import           Data.Array (Array, array, assocs, indices)
-import           Data.Ix
-import           Data.List
+import Data.Array (Array)
 
-saddlePoints :: Ix i => Array i e -> [i]
-saddlePoints matrix = [last (indices matrix)]
-    where numRow = rangeSize $ indices matrix
-          -- numCol = snd $ last $ indices matrix
+saddlePoints :: Array i e -> [i]
+saddlePoints matrix = error "You need to implement this function."

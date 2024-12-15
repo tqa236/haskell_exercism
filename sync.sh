@@ -7,7 +7,7 @@ for path in */; do
     exercise_name=${path::-1}
     file_name=${file_name//-/_}
     echo $file_name
-    exercism download --track=python --exercise="${exercise_name}" --force
+    exercism download --track=haskell --exercise="${exercise_name}" --force
     sleep 1
     cd .. || exit
 done

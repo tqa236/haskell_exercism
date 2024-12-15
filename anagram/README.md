@@ -1,12 +1,34 @@
 # Anagram
 
-Given a word and a list of possible anagrams, select the correct sublist.
+Welcome to Anagram on Exercism's Haskell Track.
+If you need help running the tests or submitting your code, check out `HELP.md`.
 
-Given `"listen"` and a list of candidates like `"enlists" "google"
-"inlets" "banana"` the program should return a list containing
-`"inlets"`.
+## Introduction
 
-## Hints
+At a garage sale, you find a lovely vintage typewriter at a bargain price!
+Excitedly, you rush home, insert a sheet of paper, and start typing away.
+However, your excitement wanes when you examine the output: all words are garbled!
+For example, it prints "stop" instead of "post" and "least" instead of "stale."
+Carefully, you try again, but now it prints "spot" and "slate."
+After some experimentation, you find there is a random delay before each letter is printed, which messes up the order.
+You now understand why they sold it for so little money!
+
+You realize this quirk allows you to generate anagrams, which are words formed by rearranging the letters of another word.
+Pleased with your finding, you spend the rest of the day generating hundreds of anagrams.
+
+## Instructions
+
+Your task is to, given a target word and a set of candidate words, to find the subset of the candidates that are anagrams of the target.
+
+An anagram is a rearrangement of letters to form a new word: for example `"owns"` is an anagram of `"snow"`.
+A word is _not_ its own anagram: for example, `"stop"` is not an anagram of `"stop"`.
+
+The target and candidates are words of one or more ASCII alphabetic characters (`A`-`Z` and `a`-`z`).
+Lowercase and uppercase characters are equivalent: for example, `"PoTS"` is an anagram of `"sTOp"`, but `StoP` is not an anagram of `sTOp`.
+The anagram set is the subset of the candidate set that are anagrams of the target (in any order).
+Words in the anagram set should have the same letter case as in the candidate set.
+
+Given the target `"stone"` and candidates `"stone"`, `"tones"`, `"banana"`, `"tons"`, `"notes"`, `"Seton"`, the anagram set is `"tones"`, `"notes"`, `"Seton"`.
 
 To complete this exercise you need to implement the function `anagramsFor`,
 that takes a *word* and a group of *words*, returning the ones that are
@@ -29,63 +51,24 @@ types and libraries:
 The test suite was intentionally designed to accept almost any type signature
 that makes sense, so you are encouraged to find the one you think is the best.
 
-
-
-## Getting Started
-
-For installation and learning resources, refer to the
-[exercism help page](http://exercism.io/languages/haskell).
-
-## Running the tests
-
-To run the test suite, execute the following command:
-
-```bash
-stack test
-```
-
-#### If you get an error message like this...
-
-```
-No .cabal file found in directory
-```
-
-You are probably running an old stack version and need
-to upgrade it.
-
-#### Otherwise, if you get an error message like this...
-
-```
-No compiler found, expected minor version match with...
-Try running "stack setup" to install the correct GHC...
-```
-
-Just do as it says and it will download and install
-the correct compiler version:
-
-```bash
-stack setup
-```
-
-## Running *GHCi*
-
-If you want to play with your solution in GHCi, just run the command:
-
-```bash
-stack ghci
-```
-
-## Feedback, Issues, Pull Requests
-
-The [exercism/haskell](https://github.com/exercism/haskell) repository on
-GitHub is the home for all of the Haskell exercises.
-
-If you have feedback about an exercise, or want to help implementing a new
-one, head over there and create an issue.  We'll do our best to help you!
-
 ## Source
 
-Inspired by the Extreme Startup game [https://github.com/rchatley/extreme_startup](https://github.com/rchatley/extreme_startup)
+### Created by
 
-## Submitting Incomplete Solutions
-It's possible to submit an incomplete solution so you can see how others have completed the exercise.
+- @etrepum
+
+### Contributed to by
+
+- @gris
+- @iHiD
+- @kytrinyx
+- @mttakai
+- @petertseng
+- @ppartarr
+- @rbasso
+- @sshine
+- @tejasbubane
+
+### Based on
+
+Inspired by the Extreme Startup game - https://github.com/rchatley/extreme_startup
