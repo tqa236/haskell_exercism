@@ -2,12 +2,12 @@
 
 import Data.Foldable     (for_)
 import Test.Hspec        (Spec, describe, it, shouldBe)
-import Test.Hspec.Runner (configFastFail, defaultConfig, hspecWith)
+import Test.Hspec.Runner (configFailFast, defaultConfig, hspecWith)
 
 import Transpose (transpose)
 
 main :: IO ()
-main = hspecWith defaultConfig {configFastFail = True} specs
+main = hspecWith defaultConfig {configFailFast = True} specs
 
 specs :: Spec
 specs = describe "transpose" $ for_ cases test
@@ -179,5 +179,3 @@ cases = [ Case { description = "empty string"
                             ]
                }
         ]
-
--- 476e7b6f12efa841bd69756dea775a6ea43a9a33
