@@ -1,12 +1,12 @@
-name: grade-school
-version: 1.0.0.4
+name: matching-brackets
+version: 2.0.0.8
 
 dependencies:
   - base
-  - containers
+  - text
 
 library:
-  exposed-modules: School
+  exposed-modules: Brackets
   source-dirs: src
   ghc-options: -Wall
   # dependencies:
@@ -18,5 +18,5 @@ tests:
     main: Tests.hs
     source-dirs: test
     dependencies:
-      - grade-school
+      - matching-brackets
       - hspec

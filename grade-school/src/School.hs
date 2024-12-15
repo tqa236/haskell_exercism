@@ -1,6 +1,5 @@
 module School (School, add, empty, grade, sorted) where
 
-import           Data.Bifunctor
 import           Data.List       (sort)
 import           Data.Map.Strict (Map)
 import qualified Data.Map.Strict as Map
@@ -18,4 +17,4 @@ grade :: Int -> School -> [String]
 grade gradeNum school = sort $ fromMaybe [] $ Map.lookup gradeNum school
 
 sorted :: School -> [(Int, [String])]
-sorted = map (Data.Bifunctor.second sort) . Map.toAscList
+sorted = map (\(i, xs) -> (i, sort xs)) . Map.toAscList
