@@ -1,13 +1,13 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.31.1.
+-- This file has been generated from package.yaml by hpack version 0.37.0.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: f0fce52a0dd1c0fe83ef05ff5551b0070ebc15555d43eb39385cde04337e4387
+-- hash: 5ebe575c704f6fdef4d26a02e22abd0cfea4a66ccee5675c932bc12c35146a1d
 
 name:           hamming
-version:        2.1.1.8
+version:        2.3.0.10
 build-type:     Simple
 
 library

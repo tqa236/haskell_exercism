@@ -1,13 +1,13 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.31.1.
+-- This file has been generated from package.yaml by hpack version 0.37.0.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 730c973b0f2f3a99fda36767f6d9c81ac455528238f86799588a4bb6749fc0bd
+-- hash: 2023dceec3fe5a747e981d5a0d4cfc6a111057404efa2ab8be9fe514b6c3a4b7
 
 name:           leap
-version:        1.4.0.8
+version:        1.6.0.10
 build-type:     Simple
 
 library

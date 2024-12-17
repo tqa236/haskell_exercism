@@ -1,13 +1,13 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.31.1.
+-- This file has been generated from package.yaml by hpack version 0.37.0.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 3bb586a792220babe453798f2077fc62321dbebcb7f3e2b3533c9d78d9cde78e
+-- hash: 2d14b889bde2cf1016b8d4f62fa963726c72f98042278cec18c107317a50cc6f
 
 name:           space-age
-version:        1.1.0.5
+version:        1.2.0.6
 build-type:     Simple
 
 library
