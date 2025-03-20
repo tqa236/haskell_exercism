@@ -6,12 +6,12 @@ import Control.Monad.Trans (lift)
 import Data.Ix             (inRange)
 import Data.List           (group, intercalate, sort)
 import Test.Hspec          (Spec, expectationFailure, it, shouldBe, shouldNotBe, shouldSatisfy)
-import Test.Hspec.Runner   (configFastFail, defaultConfig, hspecWith)
+import Test.Hspec.Runner   (configFailFast, defaultConfig, hspecWith)
 
 import Robot (initialState, mkRobot, resetName, robotName)
 
 main :: IO ()
-main = hspecWith defaultConfig {configFastFail = True} specs
+main = hspecWith defaultConfig {configFailFast = True} specs
 
 specs :: Spec
 specs = do
@@ -73,5 +73,3 @@ specs = do
               n2' <- lift $ robotName r2
               lift $ n1' `shouldNotBe` n2'
               lift $ n2  `shouldBe`    n2'
-
--- 9ac11efd2c9fbdd190ecd7cd1a53904052ee0e65

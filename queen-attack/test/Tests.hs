@@ -2,12 +2,12 @@
 
 import Data.Foldable     (for_)
 import Test.Hspec        (Spec, describe, it, shouldBe)
-import Test.Hspec.Runner (configFastFail, defaultConfig, hspecWith)
+import Test.Hspec.Runner (configFailFast, defaultConfig, hspecWith)
 
 import Queens (boardString, canAttack)
 
 main :: IO ()
-main = hspecWith defaultConfig {configFastFail = True} specs
+main = hspecWith defaultConfig {configFailFast = True} specs
 
 specs :: Spec
 specs = do
@@ -74,5 +74,3 @@ specs = do
                   , ("can attack on fourth diagonal", (2, 2), (5, 5), True ) ]
 
       for_ cases test
-
--- cc646595d39e13c4d310da2629599bcc45e92bd9
