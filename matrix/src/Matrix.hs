@@ -13,35 +13,52 @@ module Matrix
     ) where
 
 import Data.Vector (Vector)
+import qualified Data.Vector as V
 
-data Matrix a = Dummy deriving (Eq, Show)
+-- Store matrix as a flat vector with dimensions
+data Matrix a = Matrix 
+    { matrixRows :: Int
+    , matrixCols :: Int
+    , matrixData :: Vector a
+    } deriving (Eq, Show)
 
 cols :: Matrix a -> Int
-cols matrix = error "You need to implement this function."
+cols = matrixCols
 
 column :: Int -> Matrix a -> Vector a
-column x matrix = error "You need to implement this function."
+column c m = V.generate (matrixRows m) (\r -> matrixData m V.! (r * matrixCols m + c - 1))
 
 flatten :: Matrix a -> Vector a
-flatten matrix = error "You need to implement this function."
+flatten = matrixData
 
 fromList :: [[a]] -> Matrix a
-fromList xss = error "You need to implement this function."
+fromList [] = Matrix 0 0 V.empty
+fromList xss@(xs:_) = Matrix numRows numCols (V.fromList $ concat xss)
+  where
+    numRows = length xss
+    numCols = length xs
 
 fromString :: Read a => String -> Matrix a
-fromString xs = error "You need to implement this function."
+fromString s = fromList $ map (map read . words) (lines s)
 
 reshape :: (Int, Int) -> Matrix a -> Matrix a
-reshape dimensions matrix = error "You need to implement this function."
+reshape (r, c) m = Matrix r c (matrixData m)
 
 row :: Int -> Matrix a -> Vector a
-row x matrix = error "You need to implement this function."
+row r m = V.slice start (matrixCols m) (matrixData m)
+  where
+    start = (r - 1) * matrixCols m
 
 rows :: Matrix a -> Int
-rows matrix = error "You need to implement this function."
+rows = matrixRows
 
 shape :: Matrix a -> (Int, Int)
-shape matrix = error "You need to implement this function."
+shape m = (matrixRows m, matrixCols m)
 
 transpose :: Matrix a -> Matrix a
-transpose matrix = error "You need to implement this function."
+transpose m = Matrix (matrixCols m) (matrixRows m) transposedData
+  where
+    transposedData = V.generate (matrixRows m * matrixCols m) 
+      (\i -> let r = i `div` matrixRows m
+                 c = i `mod` matrixRows m
+             in matrixData m V.! (c * matrixCols m + r))

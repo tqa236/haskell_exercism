@@ -1,6 +1,6 @@
 import Control.Arrow     ((&&&))
 import Test.Hspec        (Spec, it, shouldBe, shouldNotBe)
-import Test.Hspec.Runner (configFastFail, defaultConfig, hspecWith)
+import Test.Hspec.Runner (configFailFast, defaultConfig, hspecWith)
 import Test.QuickCheck   (Gen, choose, elements, forAllShow, listOf1, vector)
 
 import qualified Data.Vector as Vector (fromList)
@@ -20,7 +20,7 @@ import Matrix
   )
 
 main :: IO ()
-main = hspecWith defaultConfig {configFastFail = True} specs
+main = hspecWith defaultConfig {configFailFast = True} specs
 
 specs :: Spec
 specs = do
@@ -101,5 +101,3 @@ genNewShape m = (\c -> (m, (size `quot` c, c))) <$> elements factors
 
 genNonEmptyMatrix :: Gen (Matrix Int)
 genNonEmptyMatrix = choose (1, 10) >>= (fmap fromList . listOf1 . vector)
-
--- 8b77c3f28b3e961d6d1f074110c33927f8316cda
