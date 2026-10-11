@@ -9,5 +9,7 @@ for path in */; do
     echo $file_name
     exercism download --track=haskell --exercise="${exercise_name}" --force
     sleep 1
+    exercism submit src/*.hs
+    sleep 1
     cd .. || exit
 done
