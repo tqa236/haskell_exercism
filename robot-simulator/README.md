@@ -29,6 +29,8 @@ The robot then receives a number of instructions, at which point the testing fac
 - Say a robot starts at {7, 3} facing north.
   Then running this stream of instructions should leave it at {9, 4} facing west.
 
+## Hints
+
 To complete this exercise, you need to create the data type `Robot`,
 and implement the following functions:
 

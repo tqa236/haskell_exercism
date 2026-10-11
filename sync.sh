@@ -9,8 +9,12 @@ for path in */; do
     echo $file_name
     exercism download --track=haskell --exercise="${exercise_name}" --force
     sleep 1
-    git checkout -- src/*.hs
-    exercism submit src/*.hs
+    if git diff --quiet -- src/*.hs; then
+        echo "No source changes for ${exercise_name}; skipping submission"
+    else
+        git checkout -- src/*.hs
+        exercism submit src/*.hs
+    fi
     sleep 1
     cd .. || exit
 done

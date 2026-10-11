@@ -29,6 +29,8 @@ If you want to dig deeper into linked lists, check out [this article][intro-link
 [intro-linked-list]: https://medium.com/basecs/whats-a-linked-list-anyway-part-1-d8b7e6508b9d
 ~~~~
 
+## Hints
+
 To complete this exercise, you need to create the data type `LinkedList`,
 and implement the following functions:
 

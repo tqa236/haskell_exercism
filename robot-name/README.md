@@ -18,6 +18,8 @@ The names must be random: they should not follow a predictable sequence.
 Using random names means a risk of collisions.
 Your solution must ensure that every existing robot has a unique name.
 
+## Hints
+
 To complete this exercise, you need to create the data type `Robot`,
 as a mutable variable, and the data type `RunState`. You also need to
 implement the following functions:

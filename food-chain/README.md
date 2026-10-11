@@ -68,6 +68,8 @@ She's dead, of course!
 
 [cumulative-song]: https://en.wikipedia.org/wiki/Cumulative_song
 
+## Hints
+
 This exercise is about [code refactoring](https://en.wikipedia.org/wiki/Refactoring),
 so we are providing you with a solution that already passes the tests.
 

@@ -47,6 +47,8 @@ One such language is [Troll][troll].
 
 [dnd]: https://en.wikipedia.org/wiki/Dungeons_%26_Dragons
 
+## Hints
+
 This exercise uses QuickCheck generators. Here are some resources to get started:
 
 - [A QuickCheck Tutorial: Generators](https://www.stackbuilders.com/news/a-quickcheck-tutorial-generators)
