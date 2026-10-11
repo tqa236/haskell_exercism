@@ -63,4 +63,4 @@ jobs:
         uses: haskell-actions/hlint-run@v2
         with:
           path: ${{ steps.exercises.outputs.hlint_paths }}
-          fail-on: warning
+          fail-on: error
