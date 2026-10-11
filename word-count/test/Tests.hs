@@ -6,12 +6,12 @@ import Data.Char         (toLower)
 import Data.Foldable     (for_)
 import GHC.Exts          (fromList, toList)
 import Test.Hspec        (Spec, describe, it, shouldMatchList)
-import Test.Hspec.Runner (configFailFast, defaultConfig, hspecWith)
+import Test.Hspec.Runner (configFastFail, defaultConfig, hspecWith)
 
 import WordCount (wordCount)
 
 main :: IO ()
-main = hspecWith defaultConfig {configFailFast = True} specs
+main = hspecWith defaultConfig {configFastFail = True} specs
 
 specs :: Spec
 specs = describe "wordCount" $ for_ cases test

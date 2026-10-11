@@ -2,7 +2,7 @@
 
 import Control.Exception (Exception, throw, evaluate)
 import Test.Hspec        (Spec, describe, it, shouldBe, shouldThrow)
-import Test.Hspec.Runner (configFailFast, defaultConfig, hspecWith)
+import Test.Hspec.Runner (configFastFail, defaultConfig, hspecWith)
 
 import Prelude hiding
     ( (++)
@@ -28,7 +28,7 @@ import ListOps
 data StrictException = StrictException deriving (Eq, Show, Exception)
 
 main :: IO ()
-main = hspecWith defaultConfig {configFailFast = True} specs
+main = hspecWith defaultConfig {configFastFail = True} specs
 
 specs :: Spec
 specs = do

@@ -1,12 +1,12 @@
 {-# OPTIONS_GHC -fno-warn-type-defaults #-}
 
 import Test.Hspec        (Spec, describe, it, shouldBe)
-import Test.Hspec.Runner (configFailFast, defaultConfig, hspecWith)
+import Test.Hspec.Runner (configFastFail, defaultConfig, hspecWith)
 
 import Series (Error(..), largestProduct)
 
 main :: IO ()
-main = hspecWith defaultConfig {configFailFast = True} specs
+main = hspecWith defaultConfig {configFastFail = True} specs
 
 specs :: Spec
 specs = describe "largestProduct" $ do
