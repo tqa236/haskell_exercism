@@ -41,7 +41,6 @@ packages:
 - beer-song
 - binary-search-tree
 - bob
-- bowling
 - change
 - collatz-conjecture
 - connect
@@ -91,7 +90,6 @@ packages:
 - run-length-encoding
 - saddle-points
 - say
-- scrabble-score
 - secret-handshake
 - sieve
 - simple-cipher
