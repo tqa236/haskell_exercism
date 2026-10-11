@@ -1,14 +1,15 @@
 module CryptoSquare (encode) where
 
-import           Data.Char
-import           Data.List
+import           Data.Char (isAlphaNum, toLower)
+import           Data.List (transpose)
 import           Data.List.Split (chunksOf)
 
 encode :: String -> String
-encode xs = unwords $ transpose $ chunksOf numChunks plainText
-    where numChunks = isqrt $ length xs
-          plainText = map toLower $ filter isAlphaNum xs
-
-
-isqrt :: Int -> Int
-isqrt = floor . (sqrt :: Double -> Double) . fromIntegral
+encode xs
+    | null plainText = ""
+    | otherwise = unwords $ transpose $ chunksOf columns paddedText
+  where
+    plainText = map toLower $ filter isAlphaNum xs
+    columns = ceiling $ sqrt (fromIntegral (length plainText) :: Double)
+    rows = (length plainText + columns - 1) `div` columns
+    paddedText = plainText ++ replicate (rows * columns - length plainText) ' '
