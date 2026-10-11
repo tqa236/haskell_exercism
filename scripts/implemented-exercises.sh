@@ -24,15 +24,15 @@ while IFS= read -r directory; do
 
     is_unfinished "$directory" && continue
 
-    cabal_file=$(find "$directory" -maxdepth 1 -type f -name '*.cabal' -print -quit)
-    if [[ -z "$cabal_file" ]]; then
-        echo "No Cabal file found for Stack package: $directory" >&2
+    package_manifest="$directory/package.yaml"
+    if [[ ! -f "$package_manifest" ]]; then
+        echo "No package.yaml found for Stack package: $directory" >&2
         exit 1
     fi
 
-    package=$(sed -n 's/^name:[[:space:]]*//p' "$cabal_file" | head -n 1)
+    package=$(sed -n 's/^name:[[:space:]]*//p' "$package_manifest" | head -n 1)
     if [[ -z "$package" ]]; then
-        echo "No package name found in $cabal_file" >&2
+        echo "No package name found in $package_manifest" >&2
         exit 1
     fi
     packages+=("$package")
